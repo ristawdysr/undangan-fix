@@ -287,6 +287,12 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const wishForm = document.getElementById("wishForm");
 const wishList = document.getElementById("wishList");
 
+const successPopup =
+  document.getElementById("successPopup");
+
+const closeSuccessPopup =
+  document.getElementById("closeSuccessPopup");
+
 // =======================
 // LOAD WISHES
 // =======================
@@ -360,19 +366,25 @@ wishForm.addEventListener("submit", async (e) => {
       }
     ]);
 
-  if (error) {
-    alert("Ucapan gagal dikirim.");
-    console.log("Gagal mengirim ucapan:", error);
-    return;
-  }
+    if (error) {
+        alert("Ucapan gagal dikirim.");
+        console.log("Gagal mengirim ucapan:", error);
+        return;
+    }
 
-  wishForm.reset();
-  attendanceInput.value = "Hadir";
+    successPopup.classList.remove("hidden");
 
-  attendanceButtons.forEach((item) => item.classList.remove("active"));
-  attendanceButtons[0].classList.add("active");
+    wishForm.reset();
 
-  loadWishes();
+    attendanceInput.value = "Hadir";
+
+    attendanceButtons.forEach((item) =>
+        item.classList.remove("active")
+    );
+
+    attendanceButtons[0].classList.add("active");
+
+    loadWishes();
 });
 
 loadWishes();
@@ -972,3 +984,35 @@ const autoFadeObserver =
 autoFadeElements.forEach((el) => {
   autoFadeObserver.observe(el);
 });
+
+// =======================
+// SUCCESS POPUP
+// =======================
+
+if (closeSuccessPopup) {
+
+  closeSuccessPopup.addEventListener(
+    "click",
+    () => {
+
+      successPopup.classList.add("hidden");
+
+    }
+  );
+}
+
+if (successPopup) {
+
+  successPopup.addEventListener(
+    "click",
+    (e) => {
+
+      if (e.target === successPopup) {
+
+        successPopup.classList.add("hidden");
+
+      }
+
+    }
+  );
+}

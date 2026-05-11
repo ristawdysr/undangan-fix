@@ -2515,14 +2515,22 @@ body.modal-open #mainContent {
    R & P ELEGANT LOGO
 ========================================= */
 
+/* =========================================
+   R & P FINAL - TIDAK NUMPUK
+========================================= */
+
 .rp-logo {
   position: relative !important;
-  width: 280px !important;
-  height: 180px !important;
-  margin: 38px auto 0 !important;
+  width: 320px !important;
+  height: 230px !important;
+  margin: 90px auto 0 !important;
+
   font-family: "Alex Brush", cursive !important;
   color: #fff !important;
-  text-shadow: 0 8px 28px rgba(0,0,0,0.45) !important;
+
+  text-shadow:
+    0 10px 32px rgba(0,0,0,0.52),
+    0 0 14px rgba(255,255,255,0.18) !important;
 }
 
 .rp-logo span {
@@ -2531,25 +2539,34 @@ body.modal-open #mainContent {
   line-height: 1 !important;
 }
 
+/* R */
 .rp-r {
   left: 0 !important;
   top: 0 !important;
-  font-size: 118px !important;
-  transform: rotate(-18deg) !important;
+
+  font-size: 122px !important;
+
+  transform: rotate(-12deg) !important;
 }
 
+/* & */
 .rp-amp {
-  left: 104px !important;
-  top: 62px !important;
-  font-size: 82px !important;
-  transform: rotate(-8deg) !important;
+  left: 118px !important;
+  top: 82px !important;
+
+  font-size: 92px !important;
+
+  transform: rotate(-6deg) !important;
 }
 
+/* P */
 .rp-p {
-  right: 0 !important;
-  top: 48px !important;
-  font-size: 118px !important;
-  transform: rotate(18deg) !important;
+  right: -8px !important;
+  top: 108px !important;
+
+  font-size: 128px !important;
+
+  transform: rotate(0deg) !important;
 }
 
 .rp-logo::before,
@@ -2557,31 +2574,31 @@ body.modal-open #mainContent {
   display: none !important;
 }
 
+/* MOBILE */
 @media (max-width: 430px) {
+
   .rp-logo {
-    width: 250px !important;
-    height: 165px !important;
+    width: 270px !important;
+    height: 190px !important;
+    margin-top: 74px !important;
   }
 
   .rp-r {
-    font-size: 104px !important;
-    left: 0 !important;
-    top: 0 !important;
-    transform: rotate(-18deg) !important;
+    font-size: 100px !important;
   }
 
   .rp-amp {
-    left: 92px !important;
-    top: 58px !important;
-    font-size: 74px !important;
+    left: 96px !important;
+    top: 70px !important;
+    font-size: 76px !important;
   }
 
   .rp-p {
-    font-size: 104px !important;
-    right: 0 !important;
-    top: 48px !important;
-    transform: rotate(18deg) !important;
+    right: -4px !important;
+    top: 92px !important;
+    font-size: 106px !important;
   }
+
 }
 
 /* MOBILE */
@@ -2824,4 +2841,207 @@ body.modal-open #mainContent {
       ),
       url("data/bg.jpg") center/cover no-repeat !important;
   }
+}
+
+/* =========================================
+   SUCCESS POPUP
+========================================= */
+
+.success-popup {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(0,0,0,0.72);
+
+  z-index: 99999;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  animation: fadeIn .35s ease;
+}
+
+.success-popup.hidden {
+  display: none;
+}
+
+.success-popup-card {
+  width: 100%;
+  max-width: 340px;
+
+  padding: 34px 28px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18,18,18,0.96),
+      rgba(10,10,10,0.98)
+    );
+
+  border: 1px solid rgba(217,176,111,0.34);
+
+  text-align: center;
+
+  box-shadow:
+    0 18px 60px rgba(0,0,0,0.45);
+
+  animation:
+    popupUp .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.success-icon {
+  width: 82px;
+  height: 82px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d9b06f,
+      #f3d39c
+    );
+
+  color: #111;
+
+  font-size: 42px;
+
+  box-shadow:
+    0 10px 30px rgba(217,176,111,0.35);
+}
+
+.success-popup-card h3 {
+  margin-bottom: 12px;
+
+  color: #d9b06f;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.success-popup-card p {
+  color: rgba(255,255,255,0.82);
+
+  line-height: 1.7;
+
+  font-size: 15px;
+
+  margin-bottom: 26px;
+}
+
+.success-btn {
+  width: 100%;
+
+  height: 54px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.3);
+
+  background: transparent;
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.success-btn:hover {
+  background: #d9b06f;
+  color: #111;
+}
+
+@keyframes popupUp {
+  from {
+    opacity: 0;
+    transform:
+      translateY(30px)
+      scale(.92);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-couple-name {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 2px;
+
+  line-height: 1;
+
+  font-family: "Alex Brush", cursive;
+  color: #fff;
+
+  text-align: center;
+}
+
+.hero-couple-name span {
+  font-size: 102px;
+  font-weight: 400;
+
+  line-height: .89;
+}
+
+.hero-couple-name small {
+  font-size: 54px;
+
+  font-family: "Alex Brush", cursive;
+
+  margin: -10px 0;
+
+  opacity: .92;
+}
+
+@media (max-width: 430px) {
+
+  .hero-couple-name span {
+    font-size: 88px;
+  }
+
+  .hero-couple-name small {
+    font-size: 46px;
+  }
+
 }

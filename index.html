@@ -32,7 +32,11 @@
 
     <div class="cover-content" data-aos="fade-up">
       <p class="small-title">The Wedding of</p>
-      <h1>Pedro & Rista</h1>
+        <h1 class="hero-couple-name">
+            <span>Pedro</span>
+            <small>&</small>
+            <span>Rista</span>
+        </h1>
 
       <p class="guest-label">Kepada</p>
       <h3 id="guestName">Tamu Undangan</h3>
@@ -90,7 +94,11 @@
     <section id="home" class="section hero bg-section">
       <div class="section-inner hero-inner" data-aos="fade-up">
         <p class="small-title">The Wedding of</p>
-        <h1>Pedro & Rista</h1>
+        <h1 class="hero-couple-name">
+            <span>Pedro</span>
+            <small>&</small>
+            <span>Rista</span>
+        </h1>
 
         <h2>RISTA <span>||</span> PEDRO</h2>
 
@@ -507,8 +515,30 @@
     <i class="ri-music-2-line"></i>
   </button>
 
+  <div id="successPopup" class="success-popup hidden">
+        <div class="success-popup-card">
+
+            <div class="success-icon">
+            <i class="ri-check-line"></i>
+            </div>
+
+            <h3>Terima Kasih</h3>
+
+            <p>
+            Konfirmasi kehadiran dan doa Anda
+            berhasil dikirim.
+            </p>
+
+            <button id="closeSuccessPopup" class="success-btn">
+            Tutup
+            </button>
+
+        </div>
+    </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="script.js"></script>
+
 </body>
 </html>
