@@ -2779,3 +2779,33 @@ body.modal-open #mainContent {
     animation-duration: 45s !important;
   }
 }
+
+/* HERO MOBILE IMAGE FIX */
+@media (max-width: 768px) {
+  #home {
+    background:
+      linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.68)
+      ),
+      url("data/bg.jpg") center/cover no-repeat !important;
+  }
+
+  .bg-section {
+    background:
+      linear-gradient(
+        rgba(0,0,0,0.42),
+        rgba(0,0,0,0.72)
+      ),
+      url("data/bg.jpg") center/cover no-repeat !important;
+  }
+
+  .solid-section {
+    background:
+      linear-gradient(
+        rgba(8,8,8,0.86),
+        rgba(8,8,8,0.94)
+      ),
+      url("data/bg.jpg") center/cover no-repeat !important;
+  }
+}
