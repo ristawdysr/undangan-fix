@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Upload Foto Wedding</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body class="upload-page">
+
+  <section class="upload-section">
+
+    <div class="upload-card">
+
+      <p class="small-title">Wedding Frame</p>
+
+      <h1>Upload Foto</h1>
+
+      <p class="upload-desc">
+        Upload dan abadikan momen indah selama acara berlangsung bersama kami.
+      </p>
+
+      <label for="photoUpload" class="main-btn upload-btn">
+        Pilih Foto
+      </label>
+
+      <input
+            type="file"
+            id="photoUpload"
+            hidden
+            accept="image/*"
+            capture="environment"
+        />
+
+      <button id="uploadSubmitBtn" class="main-btn secondary">
+        Kirim Foto
+      </button>
+
+      <p id="selectedFile" class="selected-file"></p>
+
+      <p id="uploadStatus" class="upload-status"></p>
+
+      <a href="photos.html" class="back-gallery">
+        Lihat Gallery Foto →
+      </a>
+
+    </div>
+
+  </section>
+
+  <script src="upload.js"></script>
+
+</body>
+</html>
