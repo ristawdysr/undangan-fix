@@ -2722,3 +2722,60 @@ body.modal-open #mainContent {
   right: 22px !important;
   z-index: 2147483646 !important;
 }
+
+/* =========================================
+   MOBILE PERFORMANCE FIX
+========================================= */
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+
+  .fade-auto,
+  .fade-scroll,
+  .fade-line,
+  .section-inner,
+  .couple-text,
+  .story-text,
+  .event-card,
+  .rundown-title,
+  .frame-img,
+  .frame-buttons,
+  .gallery-grid img,
+  .rsvp-form,
+  .wish-ticker,
+  .gift-card,
+  .ending-content {
+    filter: none !important;
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease !important;
+  }
+
+  .popup-overlay,
+  .guest-popup,
+  .upload-card,
+  .photos-popup-card,
+  .rsvp-form,
+  .event-card,
+  .gift-card,
+  .story-text,
+  .side-menu,
+  .music-btn,
+  .menu-btn {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .gallery-grid img,
+  .photo-item img,
+  .couple-photo img,
+  .ending-section img {
+    will-change: auto !important;
+  }
+
+  .wish-list {
+    animation-duration: 45s !important;
+  }
+}
