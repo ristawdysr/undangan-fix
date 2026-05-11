@@ -20,11 +20,21 @@ const closeMenu = document.getElementById("closeMenu");
 
 const guestPopup = document.getElementById("guestPopup");
 const closePopup = document.getElementById("closePopup");
+
+// pindahkan tombol ke body agar sticky
+document.body.appendChild(menuBtn);
+document.body.appendChild(sideMenu);
+document.body.appendChild(musicBtn);
 document.body.appendChild(guestPopup);
+
+// sembunyikan hamburger & music saat masih cover
+menuBtn.classList.add("hidden");
+sideMenu.classList.add("hidden");
+musicBtn.classList.add("hidden");
 
 // =======================
 // AMBIL NAMA TAMU DARI URL
-// contoh: index.html?to=Bapak%20Andi&ket=Keluarga
+// contoh: index.html?to=Rista&ket=Istri
 // =======================
 
 const params = new URLSearchParams(window.location.search);
@@ -34,6 +44,11 @@ const ket = params.get("ket") || "";
 document.getElementById("guestName").textContent = guest;
 document.getElementById("popupGuestName").textContent = guest;
 
+const guestKet = document.getElementById("guestKet");
+
+if (guestKet) {
+  guestKet.textContent = ket;
+}
 // =======================
 // BUKA UNDANGAN
 // =======================
@@ -83,6 +98,8 @@ openBtn.addEventListener("click", () => {
     mainContent.classList.add("main-show");
 
     musicBtn.classList.remove("hidden");
+    menuBtn.classList.remove("hidden");
+    sideMenu.classList.remove("hidden");
 
     window.scrollTo(0, 0);
 
@@ -864,3 +881,94 @@ if (photosPopup) {
     }
   });
 }
+
+
+// =======================
+// GLOBAL FADE IN OBSERVER
+// =======================
+
+const globalFadeItems = document.querySelectorAll(`
+  .section-inner,
+  .couple-text,
+  .story-text,
+  .event-card,
+  .rundown-title,
+  .frame-img,
+  .frame-buttons,
+  .rsvp-form,
+  .wish-ticker,
+  .gift-card,
+  .ending-content
+`);
+
+const globalFadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.18
+});
+
+globalFadeItems.forEach((item) => {
+  globalFadeObserver.observe(item);
+});
+
+// =====================================================
+// AUTO FADE SEMUA ELEMEN
+// =====================================================
+
+const autoFadeSelectors = `
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section p,
+section a,
+section img,
+section .event-card,
+section .gift-card,
+section .gallery-grid img,
+section .countdown-box,
+section .rsvp-form,
+section .wish-ticker,
+section .frame-buttons,
+section .journey-images,
+section .line,
+section .verse,
+section .intro-ornament,
+section .signature,
+section .story-text,
+section .photos-grid,
+section .photo-item
+`;
+
+const autoFadeElements =
+  document.querySelectorAll(autoFadeSelectors);
+
+autoFadeElements.forEach((el) => {
+  el.classList.add("fade-auto");
+});
+
+const autoFadeObserver =
+  new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("show");
+
+      }
+
+    });
+
+  }, {
+    threshold: 0.12
+  });
+
+autoFadeElements.forEach((el) => {
+  autoFadeObserver.observe(el);
+});

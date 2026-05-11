@@ -290,6 +290,15 @@ img {
   box-shadow: 0 12px 26px rgba(0,0,0,0.22);
 }
 
+.guest-ket {
+  margin-top: -14px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 .cover-desc {
   max-width: 300px;
   margin: 0 auto 34px;
@@ -2500,4 +2509,216 @@ body.modal-open #mainContent {
   overflow-y: auto !important;
   overscroll-behavior: contain !important;
   -webkit-overflow-scrolling: touch !important;
+}
+
+/* =========================================
+   R & P ELEGANT LOGO
+========================================= */
+
+.rp-logo {
+  position: relative;
+  width: 260px;
+  height: 170px;
+  margin: 34px auto 0;
+
+  font-family: "Alex Brush", cursive;
+  color: #fff;
+
+  text-shadow:
+    0 6px 24px rgba(0,0,0,0.35),
+    0 0 18px rgba(255,255,255,0.08);
+}
+
+.rp-logo span {
+  position: absolute;
+  line-height: 1;
+  display: block;
+}
+
+.rp-r {
+  left: 0;
+  top: 0;
+
+  font-size: 126px;
+  transform: rotate(-6deg);
+}
+
+.rp-amp {
+  left: 88px;
+  top: 58px;
+
+  font-size: 102px;
+
+  transform: rotate(-8deg);
+
+  opacity: 0.96;
+}
+
+.rp-p {
+  right: 0;
+  top: 34px;
+
+  font-size: 134px;
+
+  transform: rotate(5deg);
+}
+
+.rp-logo::before,
+.rp-logo::after {
+  display: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 430px) {
+
+  .rp-logo {
+    width: 240px;
+    height: 160px;
+  }
+
+  .rp-r {
+    font-size: 112px;
+  }
+
+  .rp-amp {
+    left: 80px;
+    top: 54px;
+    font-size: 92px;
+  }
+
+  .rp-p {
+    top: 32px;
+    font-size: 120px;
+  }
+
+}
+
+/* =====================================================
+   GLOBAL FADE IN UNTUK SEMUA BAGIAN
+===================================================== */
+
+.section-inner,
+.couple-text,
+.story-text,
+.event-card,
+.rundown-title,
+.frame-img,
+.frame-buttons,
+.gallery-grid img,
+.rsvp-form,
+.wish-ticker,
+.gift-card,
+.ending-content {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    filter 1s ease;
+  filter: blur(5px);
+}
+
+.section-inner.show,
+.couple-text.show,
+.story-text.show,
+.event-card.show,
+.rundown-title.show,
+.frame-img.show,
+.frame-buttons.show,
+.gallery-grid img.show,
+.rsvp-form.show,
+.wish-ticker.show,
+.gift-card.show,
+.ending-content.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Hindari cover ikut hilang */
+.cover .cover-content {
+  opacity: 1 !important;
+  transform: translateY(-4px) !important;
+  filter: none !important;
+}
+
+/* =====================================================
+   GLOBAL AUTO FADE IN
+===================================================== */
+
+.fade-auto {
+  opacity: 0;
+  transform: translateY(34px);
+  filter: blur(6px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    filter 1s ease;
+}
+
+.fade-auto.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.cover * {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* =========================================
+   FIX HAMBURGER TETAP STICKY
+========================================= */
+
+#menuBtn {
+  position: fixed !important;
+  top: 22px !important;
+  right: 22px !important;
+  z-index: 2147483647 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+}
+
+#menuBtn.hide {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: scale(0.85) !important;
+}
+
+#sideMenu {
+  position: fixed !important;
+  top: 22px !important;
+  right: 22px !important;
+  z-index: 2147483646 !important;
+}
+
+#sideMenu.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+#menuBtn.fade-auto,
+#sideMenu.fade-auto {
+  filter: none !important;
+}
+
+#menuBtn {
+  position: fixed !important;
+  top: 22px !important;
+  right: 22px !important;
+  z-index: 2147483647 !important;
+}
+
+#sideMenu {
+  position: fixed !important;
+  top: 22px !important;
+  right: 22px !important;
+  z-index: 2147483646 !important;
 }
