@@ -8,13 +8,30 @@
 
   <link rel="stylesheet" href="style.css"/>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Josefin+Sans:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" />
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 
 <body class="upload-page">
 
-  <section class="upload-section">
+  <audio id="pageMusic" loop>
+    <source src="data/music.mp3" type="audio/mpeg" />
+  </audio>
 
+  <a href="index.html#frame" class="page-back-btn">
+    <i class="ri-arrow-left-line"></i>
+  </a>
+
+  <button id="pageMusicBtn" class="page-music-btn">
+    <i class="ri-music-2-line"></i>
+  </button>
+
+  <section class="upload-section">
     <div class="upload-card">
 
       <p class="small-title">Wedding Frame</p>
@@ -25,24 +42,36 @@
         Upload dan abadikan momen indah selama acara berlangsung bersama kami.
       </p>
 
-      <label for="photoUpload" class="main-btn upload-btn">
-        Pilih Foto
-      </label>
+      <div class="upload-actions">
+        <label for="cameraUpload" class="main-btn upload-btn">
+          Ambil Foto
+        </label>
 
-      <input
-            type="file"
-            id="photoUpload"
-            hidden
-            accept="image/*"
-            capture="environment"
+        <input
+          type="file"
+          id="cameraUpload"
+          hidden
+          accept="image/*"
+          capture="environment"
         />
+
+        <label for="photoUpload" class="main-btn secondary">
+          Pilih Gallery
+        </label>
+
+        <input
+          type="file"
+          id="photoUpload"
+          hidden
+          accept="image/*"
+        />
+      </div>
 
       <button id="uploadSubmitBtn" class="main-btn secondary">
         Kirim Foto
       </button>
 
       <p id="selectedFile" class="selected-file"></p>
-
       <p id="uploadStatus" class="upload-status"></p>
 
       <a href="photos.html" class="back-gallery">
@@ -50,10 +79,8 @@
       </a>
 
     </div>
-
   </section>
 
   <script src="upload.js"></script>
-
 </body>
 </html>

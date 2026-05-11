@@ -240,7 +240,10 @@
                 <p>31 Mei 2026</p>
                 <p>13.00 - Selesai</p>
                 <p>Gunung Mojo, RT 23/00, Argosari, Sedayu, Bantul, Daerah Istimewa Yogyakarta</p>
-                <a href="https://maps.google.com/?q=Gunung+Mojo+Argosari+Sedayu+Bantul" target="_blank">Lihat Lokasi</a>
+                <a
+                href="https://www.google.com/maps/place//@-7.8129916,110.2396698,15z?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                >Lihat Lokasi</a>
             </div>
 
             <div class="event-card event-right fade-scroll">
@@ -248,7 +251,10 @@
                 <p>02 Agustus 2026</p>
                 <p>09.00 - Selesai</p>
                 <p>RT 10/03, Tulungrejo, Karangrejo, Kandat, Kediri, Jawa Timur</p>
-                <a href="https://maps.google.com/?q=Tulungrejo+Karangrejo+Kandat+Kediri" target="_blank">Lihat Lokasi</a>
+                <a
+                href="https://www.google.com/maps/place/D+%26+K+Cell/@-7.944913,112.0642213,19z/data=!4m15!1m8!3m7!1s0x2e78f75a8f1f9e5d:0x246550f913879246!2sTulungrejo,+Karangrejo,+Kandat,+Kediri+Regency,+East+Java!3b1!8m2!3d-7.9450844!4d112.0625411!16s%2Fg%2F11ghndplhv!3m5!1s0x2e78f74ed8f008c3:0x9dd5916d2b214adb!8m2!3d-7.9450919!4d112.0645473!16s%2Fg%2F11bzrnzskr?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                >Lihat Lokasi</a>
             </div>
 
         </div>
@@ -256,33 +262,108 @@
 
     <!-- WEDDING FRAME -->
     <section id="frame" class="section solid-section">
-      <div class="section-inner" data-aos="fade-up">
-        <div class="frame-img">
-          <img src="data/weddingframe.jpg" alt="Wedding Frame" />
+        <div class="section-inner" data-aos="fade-up">
+            <div class="frame-img">
+            <img src="data/weddingframe.jpg" alt="Wedding Frame" />
+            </div>
+
+            <p class="small-title">Capture Your Moment</p>
+            <h2>Wedding Frame</h2>
+
+            <p class="desc">
+            Unggah dan abadikan foto Anda selama acara berlangsung untuk dapat dikenang.
+            </p>
+
+            <div class="frame-buttons">
+                <button id="openUploadPopup" class="main-btn upload-btn">
+                    Upload Foto
+                </button>
+
+                <button id="openPhotosPopup" class="main-btn secondary photo-list-btn">
+                    Lihat Foto Acara
+                </button>
+            </div>
+
+            <p class="desc small-desc">
+            Bagikan momen terbaik Anda bersama kami.
+            </p>
         </div>
-
-        <p class="small-title">Capture Your Moment</p>
-        <h2>Wedding Frame</h2>
-
-        <p class="desc">
-          Unggah dan abadikan foto Anda selama acara berlangsung untuk dapat dikenang.
-        </p>
-
-        <div class="frame-buttons">
-            <a href="upload.html" class="main-btn upload-btn">
-                Upload Foto
-            </a>
-
-            <a href="photos.html" class="main-btn secondary photo-list-btn">
-                Lihat Foto Acara
-            </a>
-        </div>
-
-        <p class="desc small-desc">
-          Bagikan momen terbaik Anda bersama kami.
-        </p>
-      </div>
     </section>
+
+    <!-- UPLOAD POPUP -->
+    <div id="uploadPopup" class="popup-overlay hidden">
+        <div class="upload-card popup-card">
+            <button id="closeUploadPopup" class="popup-close">
+            <i class="ri-close-line"></i>
+            </button>
+
+            <p class="small-title">Wedding Frame</p>
+
+            <h1>Upload Foto</h1>
+
+            <p class="upload-desc">
+            Upload dan abadikan momen indah selama acara berlangsung bersama kami.
+            </p>
+
+            <div class="upload-actions">
+            <label for="cameraUpload" class="main-btn upload-btn">
+                Ambil Foto
+            </label>
+
+            <input
+                type="file"
+                id="cameraUpload"
+                hidden
+                accept="image/*"
+                capture="environment"
+            />
+
+            <label for="photoUpload" class="main-btn secondary">
+                Pilih Gallery
+            </label>
+
+            <input
+                type="file"
+                id="photoUpload"
+                hidden
+                accept="image/*"
+            />
+            </div>
+
+            <button id="uploadSubmitBtn" class="main-btn secondary">
+            Kirim Foto
+            </button>
+
+            <p id="selectedFile" class="selected-file"></p>
+            <p id="uploadStatus" class="upload-status"></p>
+
+            <button id="openPhotosFromUpload" class="back-gallery popup-link-btn">
+            Lihat Gallery Foto →
+            </button>
+        </div>
+    </div>
+
+    <!-- PHOTOS POPUP -->
+    <div id="photosPopup" class="popup-overlay hidden">
+        <div class="photos-popup-card popup-card">
+            <button id="closePhotosPopup" class="popup-close">
+            <i class="ri-close-line"></i>
+            </button>
+
+            <div class="photos-header">
+            <p class="small-title">Our Moment</p>
+
+            <h1>Wedding Gallery</h1>
+
+            <p>
+                Kumpulan foto dari keluarga, sahabat, dan tamu undangan kami.
+            </p>
+            </div>
+
+            <div id="photosGrid" class="photos-grid"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- GALLERY -->
     <section id="gallery" class="section solid-section gallery-section">

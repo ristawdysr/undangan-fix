@@ -8,15 +8,32 @@
 
   <link rel="stylesheet" href="style.css"/>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Josefin+Sans:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" />
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 
 <body class="photos-page">
 
+  <audio id="pageMusic" loop>
+    <source src="data/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <a href="index.html#frame" class="page-back-btn">
+    <i class="ri-arrow-left-line"></i>
+  </a>
+
+  <button id="pageMusicBtn" class="page-music-btn">
+    <i class="ri-music-2-line"></i>
+  </button>
+
   <section class="photos-section">
 
     <div class="photos-header">
-
       <p class="small-title">Our Moment</p>
 
       <h1>Wedding Gallery</h1>
@@ -24,7 +41,6 @@
       <p>
         Kumpulan foto dari keluarga, sahabat, dan tamu undangan kami.
       </p>
-
     </div>
 
     <div id="photosGrid" class="photos-grid"></div>
@@ -38,6 +54,5 @@
   </section>
 
   <script src="photos.js"></script>
-
 </body>
 </html>

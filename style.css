@@ -2167,3 +2167,337 @@ img {
   font-family: "Montserrat", sans-serif !important;
   font-size: 12px !important;
 }
+
+/* =========================================
+   UPLOAD / PHOTOS PAGE FINAL
+========================================= */
+
+.upload-page,
+.photos-page {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.72)),
+    url("data/bg.jpg") center/cover fixed no-repeat;
+  color: #fff;
+}
+
+.upload-section,
+.photos-section {
+  min-height: 100vh;
+  padding: 46px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-section {
+  justify-content: center;
+}
+
+.upload-card {
+  width: 100%;
+  max-width: 370px;
+  padding: 42px 28px 36px;
+  border-radius: 30px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(12,12,12,0.68),
+      rgba(12,12,12,0.88)
+    );
+  border: 1px solid rgba(213,161,95,0.38);
+  backdrop-filter: blur(14px);
+  text-align: center;
+}
+
+.upload-card h1,
+.photos-header h1 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 24px;
+}
+
+.upload-desc,
+.photos-header p {
+  max-width: 290px;
+  margin: 0 auto 30px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.86);
+}
+
+.upload-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.upload-card .main-btn,
+.photos-bottom .main-btn {
+  width: 240px;
+  min-height: 46px;
+  margin: 0 auto;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.upload-btn::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+
+  background:
+    url("data/foto.png") center/contain no-repeat;
+
+  display: inline-block;
+}
+
+.upload-card .secondary::before {
+  content: "▦";
+  margin-right: 9px;
+}
+
+.selected-file,
+.upload-status {
+  margin-top: 16px;
+  min-height: 18px;
+  font-size: 12px;
+  color: var(--gold-light);
+}
+
+.back-gallery {
+  display: inline-block;
+  margin-top: 30px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.page-back-btn,
+.page-music-btn {
+  position: fixed;
+  z-index: 30;
+  top: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(213,161,95,0.72);
+  background: rgba(8,8,8,0.55);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  font-size: 20px;
+}
+
+.page-back-btn {
+  left: 18px;
+}
+
+.page-music-btn {
+  right: 18px;
+}
+
+.page-music-btn.pause {
+  opacity: 0.55;
+}
+
+/* PHOTOS */
+
+.photos-header {
+  text-align: center;
+  margin: 34px 0 34px;
+}
+
+.photos-grid {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 12px;
+}
+
+.photo-item {
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(213,161,95,0.18);
+  opacity: 0;
+  transform: translateY(22px) scale(0.96);
+  animation: photoFadeIn 0.75s ease forwards;
+}
+
+.photo-item img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  transition: 0.5s ease;
+}
+
+.photo-item:hover img {
+  transform: scale(1.05);
+}
+
+.photos-bottom {
+  margin-top: 38px;
+}
+
+@keyframes photoFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popup-card {
+  position: relative;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+.photos-popup-card {
+  width: 92%;
+  max-width: 900px;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 34px 24px;
+  border-radius: 28px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(12,12,12,0.78),
+      rgba(12,12,12,0.92)
+    );
+  border: 1px solid rgba(213,161,95,0.38);
+  backdrop-filter: blur(14px);
+}
+
+.popup-link-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+#uploadPopup,
+#photosPopup {
+  z-index: 999999 !important;
+}
+
+#uploadPopup.hidden,
+#photosPopup.hidden {
+  display: none !important;
+}
+
+#uploadPopup .popup-close,
+#photosPopup .popup-close {
+  z-index: 20;
+}
+
+#uploadPopup,
+#photosPopup {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 22px !important;
+  background: rgba(0, 0, 0, 0.62) !important;
+}
+
+#uploadPopup.hidden,
+#photosPopup.hidden {
+  display: none !important;
+}
+
+#uploadPopup .upload-card,
+#photosPopup .photos-popup-card {
+  position: relative !important;
+  z-index: 10000000 !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+#uploadPopup .upload-card {
+  width: 100% !important;
+  max-width: 370px !important;
+}
+
+#photosPopup .photos-popup-card {
+  width: 92% !important;
+  max-width: 900px !important;
+  max-height: 88vh !important;
+  overflow-y: auto !important;
+}
+
+/* FIX PHOTOS POPUP: CLOSE STICKY + 2 GRID */
+#photosPopup .photos-popup-card {
+  position: relative !important;
+  padding-top: 54px !important;
+}
+
+#photosPopup #closePhotosPopup {
+  position: fixed !important;
+  top: 62px !important;
+  right: 32px !important;
+  width: 38px !important;
+  height: 38px !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border-radius: 50% !important;
+  background: rgba(255,255,255,0.16) !important;
+  color: #fff !important;
+  font-size: 22px !important;
+  z-index: 10000001 !important;
+}
+
+#photosPopup .photos-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px !important;
+}
+
+#photosPopup .photo-item img {
+  width: 100% !important;
+  aspect-ratio: 3 / 4 !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+
+body.modal-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+body.modal-open #mainContent {
+  overflow: hidden !important;
+}
+
+#photosPopup,
+#uploadPopup {
+  overscroll-behavior: contain !important;
+}
+
+#photosPopup .photos-popup-card,
+#uploadPopup .upload-card {
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+}
