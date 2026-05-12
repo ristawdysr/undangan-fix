@@ -61,6 +61,12 @@ function showGuestPopup() {
 
   guestPopup.classList.remove("hidden");
   guestPopup.classList.remove("fade-out");
+
+  lockScroll();
+
+  // sembunyikan hamburger saat popup Hi muncul
+  menuBtn.classList.add("hidden");
+
   popupHasShown = true;
 }
 
@@ -130,36 +136,96 @@ musicBtn.addEventListener("click", () => {
 // MENU HAMBURGER
 // =======================
 
+let lockedScrollY = 0;
+
+function lockScroll() {
+  lockedScrollY = window.scrollY;
+
+  document.documentElement.classList.add("scroll-locked");
+  document.body.classList.add("scroll-locked");
+
+  document.body.style.top = `-${lockedScrollY}px`;
+}
+
+function unlockScroll() {
+  document.documentElement.classList.remove("scroll-locked");
+  document.body.classList.remove("scroll-locked");
+
+  document.body.style.top = "";
+
+  window.scrollTo(0, lockedScrollY);
+}
+
+function lockPageScroll() {
+
+  lockedScrollY = window.scrollY;
+
+  document.body.classList.add("menu-open");
+
+  document.body.style.top =
+    `-${lockedScrollY}px`;
+}
+
+function unlockPageScroll() {
+
+  document.body.classList.remove("menu-open");
+
+  document.body.style.top = "";
+
+  window.scrollTo(0, lockedScrollY);
+}
+
 menuBtn.addEventListener("click", (e) => {
+
   e.stopPropagation();
+
   sideMenu.classList.add("active");
   menuBtn.classList.add("hide");
+
+  lockScroll();
 });
 
 closeMenu.addEventListener("click", (e) => {
+
   e.stopPropagation();
+
   sideMenu.classList.remove("active");
   menuBtn.classList.remove("hide");
+
+  lockScroll();
 });
 
 document.querySelectorAll(".side-menu a").forEach((link) => {
+
   link.addEventListener("click", () => {
+
     sideMenu.classList.remove("active");
     menuBtn.classList.remove("hide");
+
+    unlockPageScroll();
+
   });
+
 });
 
 document.addEventListener("click", (e) => {
-  const isMenuOpen = sideMenu.classList.contains("active");
+
+  const isMenuOpen =
+    sideMenu.classList.contains("active");
 
   if (
     isMenuOpen &&
     !sideMenu.contains(e.target) &&
     !menuBtn.contains(e.target)
   ) {
+
     sideMenu.classList.remove("active");
     menuBtn.classList.remove("hide");
+
+    unlockPageScroll();
+
   }
+
 });
 
 sideMenu.addEventListener("click", (e) => {
@@ -178,6 +244,12 @@ function hidePopup() {
   setTimeout(() => {
     guestPopup.classList.add("hidden");
     guestPopup.classList.remove("fade-out");
+
+    unlockScroll();
+
+    // tampilkan hamburger lagi setelah popup ditutup
+    menuBtn.classList.remove("hidden");
+
   }, 400);
 }
 
@@ -1094,3 +1166,4 @@ document.querySelectorAll(".map-link").forEach((link) => {
   });
 
 });
+

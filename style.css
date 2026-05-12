@@ -3088,3 +3088,284 @@ body.modal-open #mainContent {
 .event-blessing::after {
   display: none !important;
 }
+
+.down-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 150px;
+
+  font-size: 72px;
+  font-weight: 300;
+
+  color: var(--gold-light);
+
+  opacity: .92;
+
+  animation:
+    arrowFloat 2.4s ease-in-out infinite,
+    arrowGlow 3s ease-in-out infinite;
+}
+
+.down-arrow span {
+  line-height: 1;
+
+  text-shadow:
+    0 0 10px rgba(213,161,95,.38),
+    0 0 28px rgba(213,161,95,.18),
+    0 0 56px rgba(213,161,95,.12);
+}
+
+/* turun naik */
+@keyframes arrowFloat {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(18px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* glow */
+@keyframes arrowGlow {
+
+  0% {
+    opacity: .68;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .68;
+  }
+}
+
+/* =========================================
+   MENU BUTTON ELEGANT
+========================================= */
+
+.menu-btn {
+  transition:
+    opacity .35s ease,
+    transform .35s ease,
+    background .35s ease;
+}
+
+.menu-btn.hide {
+  opacity: 0;
+  transform: scale(.88);
+  pointer-events: none;
+}
+
+/* icon */
+.menu-btn i {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+/* =========================================
+   SIDE MENU FADE ONLY
+========================================= */
+
+.side-menu {
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(0) scale(1);
+
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
+}
+
+.side-menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-btn {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20,20,20,.82),
+      rgba(10,10,10,.92)
+    );
+
+  border: 1px solid rgba(213,161,95,.42);
+
+  box-shadow:
+    0 0 18px rgba(213,161,95,.08);
+
+  backdrop-filter: blur(8px);
+}
+
+/* MENU BUTTON TANPA BACKGROUND */
+#menuBtn {
+  position: fixed !important;
+  top: 28px !important;
+  right: 24px !important;
+  z-index: 2147483647 !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  color: var(--cream) !important;
+  font-size: 34px !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transition:
+    opacity .35s ease,
+    transform .35s ease;
+}
+
+#menuBtn i {
+  display: block;
+  text-shadow:
+    0 0 10px rgba(213,161,95,.35),
+    0 4px 14px rgba(0,0,0,.45);
+}
+
+#menuBtn.hide {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateX(18px) !important;
+}
+
+/* MENU SLIDE DARI KANAN KE KIRI */
+#sideMenu {
+  position: fixed !important;
+
+  top: 24px !important;
+  right: 20px !important;
+
+  width: 250px !important;
+  height: auto !important;
+
+  padding: 72px 26px 22px !important;
+
+  border-radius: 28px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(12,12,12,.94),
+      rgba(28,20,14,.92)
+    ) !important;
+
+  border: 1px solid rgba(213,161,95,.32) !important;
+
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.42),
+    0 0 24px rgba(213,161,95,.06) !important;
+
+  backdrop-filter: blur(14px) !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transform: translateX(120%) !important;
+
+  transition:
+    transform .42s cubic-bezier(.22,.8,.22,1),
+    opacity .35s ease !important;
+
+  z-index: 2147483646 !important;
+}
+
+#sideMenu.active {
+  transform: translateX(0) !important;
+}
+
+/* link menu */
+#sideMenu a {
+  display: block;
+
+  padding: 14px 0 14px 12px !important;
+
+  font-size: 12px !important;
+  letter-spacing: 2.5px !important;
+
+  border-bottom:
+    1px solid rgba(213,161,95,.12);
+}
+
+/* close icon */
+#closeMenu {
+  position: absolute !important;
+
+  top: 22px !important;
+  right: 22px !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  border: none !important;
+  background: transparent !important;
+
+  color: var(--cream) !important;
+
+  font-size: 28px !important;
+}
+
+#closeMenu i {
+  transition:
+    transform .35s ease,
+    opacity .35s ease;
+}
+
+#closeMenu:hover i {
+  transform: translateX(4px);
+}
+
+body.menu-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+body.menu-open,
+body.popup-open {
+  position: fixed !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  touch-action: none !important;
+}
+
+body.menu-open {
+  position: fixed !important;
+  overflow: hidden !important;
+
+  width: 100% !important;
+  height: 100vh !important;
+
+  touch-action: none !important;
+}
+
+html.scroll-locked,
+body.scroll-locked {
+  position: fixed !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  height: 100vh !important;
+  touch-action: none !important;
+}
