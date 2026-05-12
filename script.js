@@ -671,6 +671,58 @@ function compressImage(
 }
 
 // =======================
+// GOOGLE DRIVE RAW UPLOAD
+// =======================
+
+const GOOGLE_APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbzXsNlOSX5EufUPgQjrVgnCksZtC0GKZgCbp_MPRx-yNnBk8_jCA-NKwgSQISNnKY0/exec";
+
+function fileToBase64(file) {
+
+  return new Promise((resolve, reject) => {
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+
+      const base64 =
+        reader.result.split(",")[1];
+
+      resolve(base64);
+
+    };
+
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
+
+  });
+
+}
+
+async function uploadRawToGoogleDrive(file) {
+  const base64 = await fileToBase64(file);
+
+  const formData = new FormData();
+  formData.append("fileName", `RAW-${Date.now()}-${file.name}`);
+  formData.append("mimeType", file.type);
+  formData.append("base64", base64);
+
+  const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+    method: "POST",
+    body: formData
+  });
+
+  const result = await response.json();
+
+  if (!result.success) {
+    throw new Error(result.message || "Upload RAW gagal");
+  }
+
+  return result;
+}
+
+// =======================
 // UPLOAD FOTO
 // =======================
 
@@ -702,12 +754,20 @@ if (uploadSubmitBtn) {
       uploadSubmitBtn.disabled = true;
 
       uploadStatus.textContent =
+        "Mengupload file asli...";
+
+      await uploadRawToGoogleDrive(
+        selectedPhoto
+      );
+
+      uploadStatus.textContent =
         "Mengompres foto...";
 
       const compressedPhoto =
         await compressImage(selectedPhoto);
 
-      const finalPhoto = compressedPhoto;
+      const finalPhoto =
+        compressedPhoto;
 
       uploadStatus.textContent =
         "Mengupload foto...";
