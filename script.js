@@ -623,8 +623,11 @@ if (uploadSubmitBtn) {
       uploadStatus.textContent =
         "Mengompres foto...";
 
-      const finalPhoto =
+      const compressedPhoto =
         await compressImage(selectedPhoto);
+
+      const finalPhoto =
+        await addWeddingFrame(compressedPhoto);
 
       uploadStatus.textContent =
         "Mengupload foto...";
