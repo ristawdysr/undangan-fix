@@ -3369,3 +3369,119 @@ body.scroll-locked {
   height: 100vh !important;
   touch-action: none !important;
 }
+
+.up-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 46px;
+
+  font-size: 72px;
+  font-weight: 300;
+
+  color: var(--gold-light);
+  opacity: .92;
+
+  animation:
+    upArrowFloat 2.4s ease-in-out infinite,
+    arrowGlow 3s ease-in-out infinite;
+}
+
+.up-arrow span {
+  line-height: 1;
+
+  text-shadow:
+    0 0 10px rgba(213,161,95,.38),
+    0 0 28px rgba(213,161,95,.18),
+    0 0 56px rgba(213,161,95,.12);
+}
+
+@keyframes upArrowFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
+#home,
+#intro {
+  overscroll-behavior: none;
+}
+
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
+/* FIX SIMPAN TANGGAL BIAR PAS DENGAN GARIS */
+#event .main-btn,
+#saveDateBtn {
+  margin-top: 2px !important;
+  margin-bottom: 42px !important;
+  transform: translateY(-4px);
+}
+
+/* KOTAK NAMA TAMU LEBIH PANJANG */
+#guestName {
+  min-width: 230px !important;
+  max-width: 310px !important;
+  padding: 12px 30px !important;
+
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.8px !important;
+
+  white-space: normal !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+}
+
+/* KETERANGAN TAMU BIAR SERASI */
+.guest-ket {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  line-height: 1.4 !important;
+}
+
+/* =========================================
+   FIX TANGGAL COVER
+========================================= */
+
+.cover-date {
+  top: 65px !important; /* sebelumnya terlalu atas */
+
+  padding: 0 28px !important;
+
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 4px !important;
+  text-shadow: 0 0 12px rgba(255,255,255,.18);
+}
+
+/* tanggal kiri */
+.cover-date .date-left {
+  font-size: 13px !important;
+  letter-spacing: 4px !important;
+}
+
+/* tahun kanan */
+.cover-date .date-right {
+  font-size: 13px !important;
+  letter-spacing: 4px !important;
+}

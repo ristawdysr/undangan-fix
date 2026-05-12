@@ -75,6 +75,7 @@ function triggerPopupOnScroll() {
   showGuestPopup();
 }
 
+/*
 window.addEventListener("wheel", triggerPopupOnScroll, { passive: true });
 window.addEventListener("touchmove", triggerPopupOnScroll, { passive: true });
 window.addEventListener("scroll", triggerPopupOnScroll, { passive: true });
@@ -88,6 +89,13 @@ window.addEventListener("scroll", () => {
     showGuestPopup();
   }
 });
+
+*/
+
+// POPUP TAMU SEMENTARA DINONAKTIFKAN
+if (guestPopup) {
+  guestPopup.classList.add("hidden");
+}
 
 
 // =======================
@@ -110,6 +118,7 @@ openBtn.addEventListener("click", () => {
     window.scrollTo(0, 0);
 
     invitationOpened = true;
+
 
     bgMusic.currentTime = 0;
     bgMusic.play().catch(() => {
@@ -1167,3 +1176,120 @@ document.querySelectorAll(".map-link").forEach((link) => {
 
 });
 
+// =======================
+// HERO INTRO ARROW ONLY - FINAL CLEAN
+// =======================
+
+const heroSection = document.getElementById("home");
+const introSection = document.getElementById("intro");
+
+let allowArrowMove = false;
+let touchStartY = 0;
+let lastScrollY = 0;
+
+function getIntroY() {
+  return introSection.offsetTop;
+}
+
+function isTryingToEnterHero() {
+  return window.scrollY < getIntroY();
+}
+
+document.querySelector(".down-arrow")?.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  allowArrowMove = true;
+
+  window.scrollTo({
+    top: getIntroY(),
+    behavior: "smooth"
+  });
+
+  setTimeout(() => {
+    allowArrowMove = false;
+    lastScrollY = window.scrollY;
+  }, 900);
+});
+
+document.querySelector(".up-arrow")?.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  allowArrowMove = true;
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  setTimeout(() => {
+    allowArrowMove = false;
+    lastScrollY = window.scrollY;
+  }, 900);
+});
+
+window.addEventListener(
+  "wheel",
+  (e) => {
+    if (!invitationOpened || allowArrowMove) return;
+
+    const introY = getIntroY();
+    const y = window.scrollY;
+
+    if (y < introY && e.deltaY > 0) {
+      e.preventDefault();
+      return;
+    }
+
+    if (y <= introY && e.deltaY < 0) {
+      e.preventDefault();
+      return;
+    }
+  },
+  { passive: false }
+);
+
+window.addEventListener(
+  "touchstart",
+  (e) => {
+    touchStartY = e.touches[0].clientY;
+    lastScrollY = window.scrollY;
+  },
+  { passive: true }
+);
+
+window.addEventListener(
+  "touchmove",
+  (e) => {
+    if (!invitationOpened || allowArrowMove) return;
+
+    const introY = getIntroY();
+    const y = window.scrollY;
+    const nowY = e.touches[0].clientY;
+
+    const swipeUp = touchStartY - nowY > 6;
+    const swipeDown = nowY - touchStartY > 6;
+
+    if (y < introY && swipeUp) {
+      e.preventDefault();
+      return;
+    }
+
+    if (y <= introY && swipeDown) {
+      e.preventDefault();
+      return;
+    }
+  },
+  { passive: false }
+);
+
+window.addEventListener("scroll", () => {
+  if (!invitationOpened || allowArrowMove) return;
+
+  const introY = getIntroY();
+
+  if (window.scrollY < introY && lastScrollY >= introY) {
+    window.scrollTo(0, introY);
+  }
+
+  lastScrollY = window.scrollY;
+});
