@@ -201,7 +201,7 @@ closeMenu.addEventListener("click", (e) => {
   sideMenu.classList.remove("active");
   menuBtn.classList.remove("hide");
 
-  lockScroll();
+  unlockScroll();
 });
 
 document.querySelectorAll(".side-menu a").forEach((link) => {
@@ -211,7 +211,7 @@ document.querySelectorAll(".side-menu a").forEach((link) => {
     sideMenu.classList.remove("active");
     menuBtn.classList.remove("hide");
 
-    unlockPageScroll();
+    unlockScroll();
 
   });
 
@@ -707,8 +707,7 @@ if (uploadSubmitBtn) {
       const compressedPhoto =
         await compressImage(selectedPhoto);
 
-      const finalPhoto =
-        await addWeddingFrame(compressedPhoto);
+      const finalPhoto = compressedPhoto;
 
       uploadStatus.textContent =
         "Mengupload foto...";
@@ -794,10 +793,37 @@ if (uploadSubmitBtn) {
 
       loadPhotos();
 
-        setTimeout(() => {
+        uploadStatus.innerHTML = `
+          <div class="upload-success-box">
+            <div class="success-icon">
+              <i class="ri-check-line"></i>
+            </div>
+
+            <h4>Foto Berhasil Dikirim</h4>
+
+            <p>
+              Terima kasih sudah membagikan
+              momen indah bersama kami.
+            </p>
+
+            <button
+              id="openGalleryAfterUpload"
+              class="main-btn"
+              type="button"
+            >
+              Lihat Gallery
+            </button>
+          </div>
+        `;
+
+        document
+          .getElementById("openGalleryAfterUpload")
+          ?.addEventListener("click", () => {
+
             hideUploadPopup();
             showPhotosPopup();
-        }, 600);
+
+          });
     }
   );
 }

@@ -3444,3 +3444,49 @@ body {
   font-size: 13px !important;
   letter-spacing: 4px !important;
 }
+
+
+/* =========================================
+   UPLOAD SUCCESS
+========================================= */
+
+.upload-success-box {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.upload-success-box .success-icon {
+  width: 68px;
+  height: 68px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d5a15f,
+      #f1cf91
+    );
+
+  color: #1b1510;
+  font-size: 34px;
+}
+
+.upload-success-box h4 {
+  margin-bottom: 8px;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.upload-success-box p {
+  margin-bottom: 20px;
+
+  line-height: 1.7;
+}
