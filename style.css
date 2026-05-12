@@ -3045,3 +3045,46 @@ body.modal-open #mainContent {
   }
 
 }
+
+/* Tombol gold solid */
+.outline-btn,
+.main-btn,
+.submit-btn,
+.event-card a,
+.instagram-btn,
+.attendance-btn.active,
+.copy-btn,
+.success-btn {
+  background: linear-gradient(135deg, #d5a15f, #f1cf91) !important;
+  border-color: #f1cf91 !important;
+  color: #1b1510 !important;
+  box-shadow: 0 10px 26px rgba(213, 161, 95, 0.28);
+}
+
+.outline-btn:hover,
+.main-btn:hover,
+.submit-btn:hover,
+.event-card a:hover,
+.instagram-btn:hover,
+.copy-btn:hover,
+.success-btn:hover {
+  background: linear-gradient(135deg, #f1cf91, #d5a15f) !important;
+  color: #1b1510 !important;
+}
+
+/* Resepsi 1 jadi selebar Pemberkatan */
+.event-left {
+  width: 100% !important;
+  margin: 0 auto 34px !important;
+  padding: 22px !important;
+}
+
+.event-left::after {
+  display: none !important;
+}
+
+/* Hilangkan garis bawah karena Resepsi 2 sudah dihapus */
+.rundown-tree::before,
+.event-blessing::after {
+  display: none !important;
+}
