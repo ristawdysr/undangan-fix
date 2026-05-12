@@ -1177,22 +1177,15 @@ document.querySelectorAll(".map-link").forEach((link) => {
 });
 
 // =======================
-// HERO INTRO ARROW ONLY - FINAL CLEAN
+// HERO TO INTRO VIA ARROW ONLY
 // =======================
 
-const heroSection = document.getElementById("home");
 const introSection = document.getElementById("intro");
 
 let allowArrowMove = false;
-let touchStartY = 0;
-let lastScrollY = 0;
 
 function getIntroY() {
   return introSection.offsetTop;
-}
-
-function isTryingToEnterHero() {
-  return window.scrollY < getIntroY();
 }
 
 document.querySelector(".down-arrow")?.addEventListener("click", (e) => {
@@ -1207,23 +1200,6 @@ document.querySelector(".down-arrow")?.addEventListener("click", (e) => {
 
   setTimeout(() => {
     allowArrowMove = false;
-    lastScrollY = window.scrollY;
-  }, 900);
-});
-
-document.querySelector(".up-arrow")?.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  allowArrowMove = true;
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-  setTimeout(() => {
-    allowArrowMove = false;
-    lastScrollY = window.scrollY;
   }, 900);
 });
 
@@ -1235,24 +1211,20 @@ window.addEventListener(
     const introY = getIntroY();
     const y = window.scrollY;
 
+    // HERO tidak bisa scroll ke bawah
     if (y < introY && e.deltaY > 0) {
       e.preventDefault();
-      return;
-    }
-
-    if (y <= introY && e.deltaY < 0) {
-      e.preventDefault();
-      return;
     }
   },
   { passive: false }
 );
 
+let touchStartY = 0;
+
 window.addEventListener(
   "touchstart",
   (e) => {
     touchStartY = e.touches[0].clientY;
-    lastScrollY = window.scrollY;
   },
   { passive: true }
 );
@@ -1267,29 +1239,11 @@ window.addEventListener(
     const nowY = e.touches[0].clientY;
 
     const swipeUp = touchStartY - nowY > 6;
-    const swipeDown = nowY - touchStartY > 6;
 
+    // HERO tidak bisa swipe ke bawah
     if (y < introY && swipeUp) {
       e.preventDefault();
-      return;
-    }
-
-    if (y <= introY && swipeDown) {
-      e.preventDefault();
-      return;
     }
   },
   { passive: false }
 );
-
-window.addEventListener("scroll", () => {
-  if (!invitationOpened || allowArrowMove) return;
-
-  const introY = getIntroY();
-
-  if (window.scrollY < introY && lastScrollY >= introY) {
-    window.scrollTo(0, introY);
-  }
-
-  lastScrollY = window.scrollY;
-});

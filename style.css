@@ -3370,47 +3370,6 @@ body.scroll-locked {
   touch-action: none !important;
 }
 
-.up-arrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-bottom: 46px;
-
-  font-size: 72px;
-  font-weight: 300;
-
-  color: var(--gold-light);
-  opacity: .92;
-
-  animation:
-    upArrowFloat 2.4s ease-in-out infinite,
-    arrowGlow 3s ease-in-out infinite;
-}
-
-.up-arrow span {
-  line-height: 1;
-
-  text-shadow:
-    0 0 10px rgba(213,161,95,.38),
-    0 0 28px rgba(213,161,95,.18),
-    0 0 56px rgba(213,161,95,.12);
-}
-
-@keyframes upArrowFloat {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-18px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
 html,
 body {
   overscroll-behavior-y: none;
