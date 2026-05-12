@@ -704,7 +704,23 @@ async function uploadRawToGoogleDrive(file) {
   const base64 = await fileToBase64(file);
 
   const formData = new FormData();
-  formData.append("fileName", `RAW-${Date.now()}-${file.name}`);
+  const cleanGuestName =
+    (guest || "tamu")
+      .replace(/[^a-zA-Z0-9]/g, "-")
+      .toLowerCase();
+
+  const cleanKet =
+    (ket || "guest")
+      .replace(/[^a-zA-Z0-9]/g, "-")
+      .toLowerCase();
+
+  const uploadNumber =
+    String(
+      Math.floor(Math.random() * 999) + 1
+    ).padStart(3, "0");
+
+  const finalFileName =
+    `${cleanKet}-${cleanGuestName}-${uploadNumber}.jpg`;
   formData.append("mimeType", file.type);
   formData.append("base64", base64);
 
