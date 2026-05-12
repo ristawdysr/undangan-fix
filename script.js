@@ -1021,7 +1021,7 @@ if (successPopup) {
 }
 
 // =======================
-// SAVE DATE KE KALENDER HP / DEVICE
+// SAVE DATE
 // =======================
 
 const saveDateBtn = document.getElementById("saveDateBtn");
@@ -1030,45 +1030,67 @@ if (saveDateBtn) {
   saveDateBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const title = encodeURIComponent("Wedding Pedro & Rista");
+    const details = encodeURIComponent(
+      "Pemberkatan dan resepsi pernikahan Pedro & Rista"
+    );
+    const location = encodeURIComponent("Gereja St. Theresia Sedayu");
 
-    if (isMobile) {
-      window.location.href =
-        "data:text/calendar;charset=utf8," +
-        encodeURIComponent(
-`BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:Wedding Pedro & Rista
-DTSTART:20260531T030000Z
-DTEND:20260531T100000Z
-LOCATION:Gereja St. Theresia Sedayu
-DESCRIPTION:Pemberkatan dan resepsi pernikahan Pedro & Rista
-END:VEVENT
-END:VCALENDAR`
-        );
-    } else {
-      window.open(
-        "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding%20Pedro%20%26%20Rista&dates=20260531T030000Z/20260531T100000Z&location=Gereja%20St.%20Theresia%20Sedayu",
-        "_blank"
-      );
-    }
+    const googleCalendarUrl =
+      `https://calendar.google.com/calendar/render?action=TEMPLATE` +
+      `&text=${title}` +
+      `&dates=20260531T030000Z/20260531T100000Z` +
+      `&details=${details}` +
+      `&location=${location}`;
+
+    window.location.href = googleCalendarUrl;
   });
 }
 
+
 // =======================
-// LOKASI: PC BROWSER, HP GOOGLE MAPS APP
+// OPEN MAP APP MOBILE
 // =======================
 
 document.querySelectorAll(".map-link").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    if (!isMobile) return;
+  link.addEventListener("click", (e) => {
 
     e.preventDefault();
 
-    const query = encodeURIComponent(link.dataset.query);
-    window.location.href = `https://www.google.com/maps/search/?api=1&query=${query}`;
+    const query =
+      encodeURIComponent(link.dataset.query);
+
+    const isAndroid =
+      /Android/i.test(navigator.userAgent);
+
+    const isiPhone =
+      /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    // ANDROID → buka app maps langsung
+    if (isAndroid) {
+
+      window.location.href =
+        `geo:0,0?q=${query}`;
+
+      return;
+    }
+
+    // IPHONE → buka apple/google maps
+    if (isiPhone) {
+
+      window.location.href =
+        `https://maps.apple.com/?q=${query}`;
+
+      return;
+    }
+
+    // DESKTOP
+    window.open(
+      `https://www.google.com/maps/search/?api=1&query=${query}`,
+      "_blank"
+    );
+
   });
+
 });
